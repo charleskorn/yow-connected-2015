@@ -1,3 +1,5 @@
+var previousCountdown = null;
+
 $(document).ready(function () {
     $('select').material_select();
 
@@ -24,6 +26,12 @@ $(document).ready(function () {
 
             $('#life-progress-bar').css('width', percentageDone + '%');
 
+            if (previousCountdown !== null) {
+                clearTimeout(previousCountdown);
+            }
+
+            updateDeathCountdown(expectedDeath);
+
             $('#not-birthday-modal').openModal();
         }
     });
@@ -31,4 +39,43 @@ $(document).ready(function () {
 
 function clampToPercentage(value) {
     return Math.max(Math.min(value, 100), 0);
+}
+
+function updateDeathCountdown(expectedDeath) {
+    var timeToDeathInMilliseconds = expectedDeath.diff(moment(), 'milliseconds');
+    var text = '';
+
+    if (timeToDeathInMilliseconds < 0) {
+        text = 'overdue';
+    } else {
+        var timeToDeath = moment.duration(timeToDeathInMilliseconds);
+
+        var years = timeToDeath.years();
+        var months = timeToDeath.months();
+        var days = timeToDeath.days();
+        var hours = timeToDeath.hours();
+        var minutes = timeToDeath.minutes();
+        var seconds = timeToDeath.seconds();
+
+        text = pluralise(years, 'year') + ', ' +
+            pluralise(months, 'month') + ', ' +
+            pluralise(days, 'day') + ', ' +
+            pluralise(hours, 'hour') + ', ' +
+            pluralise(minutes, 'minute') + ' and ' +
+            pluralise(seconds, 'second');
+    }
+
+    $('#death-countdown').text(text);
+
+    previousCountdown = setTimeout(function() {
+        updateDeathCountdown(expectedDeath);
+    }, 1000);
+}
+
+function pluralise(value, unit) {
+    if (value === 1) {
+        return value + ' ' + unit;
+    } else {
+        return value + ' ' + unit + 's';
+    }
 }
