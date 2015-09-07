@@ -1,0 +1,22 @@
+{
+  "name": "yow-connected-2015",
+  "version": "1.0.0",
+  "description": "Materials for Yow Connected 2015 presentation",
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/charleskorn/yow-connected-2015/issues"
+  },
+  "homepage": "https://github.com/charleskorn/yow-connected-2015#readme",
+  "dependencies": {
+    "harp": "^0.17.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charleskorn/yow-connected-2015.git"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production harp server -p $PORT",
+    "dev": "harp server"
+  }
+}
