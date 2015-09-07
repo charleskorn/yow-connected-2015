@@ -14,7 +14,14 @@ $(document).ready(function () {
             $('#birthday-year').text(birthdayYear);
             $('#birthday-modal').openModal();
         } else {
-            // TODO: days to next birthday 
+            var nextBirthday = moment({year: today.year(), month: birthday.month(), day: birthday.date()});
+
+            if (nextBirthday < today) {
+                nextBirthday.add(1, 'year');
+            }
+
+            var daysToNextBirthday = nextBirthday.diff(today, 'days') + 1;
+            $('#days-to-birthday').text(daysToNextBirthday);
 
             $('#not-birthday-modal').openModal();
         }
