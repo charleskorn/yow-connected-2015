@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    // $('select').material_select();
+
     $('#submit-button').click(function() {
         var day = parseInt($('#day').val(), 10);
         var month = parseInt($('#month').val(), 10);
