@@ -7,3 +7,5 @@ rm -rf .git node_modules package.json
 popd
 
 git checkout -- working-area
+
+echo "All done."

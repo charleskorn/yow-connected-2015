@@ -7,6 +7,7 @@ git init .
 git add .
 git commit -m "Initial commit."
 
+rm -rf ../stage1/node_modules
 cp ../stage1/* .
 
 git add .
@@ -37,3 +38,5 @@ popd
 pushd stage3
 npm install
 popd
+
+echo "All done."
