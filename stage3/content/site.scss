@@ -7,3 +7,20 @@ img.life-progress-bar-icon {
   height: 50px;
   width: auto;
 }
+
+.input-field label { 
+	color: red;
+	font-size: 1rem;
+	font-weight: 900;
+	text-transform: uppercase;
+}
+
+.select-wrapper input.select-dropdown { 
+	height: 4rem;
+	font-size: 1.5rem;
+}
+
+@media all and (max-width: 600px){
+	button { width: 100%}
+	h1 { font-size: 3rem; }
+}
