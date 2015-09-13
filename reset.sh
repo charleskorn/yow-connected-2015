@@ -3,7 +3,7 @@
 set -e
 
 pushd working-area
-rm -rf .git node_modules package.json
+rm -rf .git node_modules package.json content
 popd
 
 git checkout -- working-area
